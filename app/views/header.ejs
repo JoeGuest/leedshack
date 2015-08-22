@@ -13,21 +13,23 @@
   <% } %>
 </head>
 <body>
-  <div class="row navigation-bar">
-    <div class="small-4 column left">
-      --Left--
-    </div>
-    <div class="small-4 column center">
-      <%- title %>
-    </div>
-    <div class="small-4 column right">
-      <div class="row">
-        <div class="small-6 column">
-          --User options--
-        </div>
-        <div class="small-6 column">
-          --User icon--
-        </div>
-      </div>
-    </div>
-  </div>
+  <nav class="top-bar" data-topbar role="navigation">
+    <ul class="title-area">
+      <li class="name">
+        <h1><a href="#"><%- title %></a></h1>
+      </li>
+      <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+    </ul>
+
+    <section class="top-bar-section">
+      <ul class="right">
+        <li class="has-dropdown">
+          <a href="#"><img src="http://steamcommunity-a.akamaihd.net/public/images/signinthroughsteam/sits_small.png" width="154" height="23" border="0"></a>
+          <ul class="dropdown">
+            <!-- <li><a href="#">First link in dropdown</a></li>
+            <li class="active"><a href="#">Active link in dropdown</a></li> -->
+          </ul>
+        </li>
+      </ul>
+    </section>
+  </nav>
