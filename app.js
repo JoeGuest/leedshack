@@ -4,6 +4,10 @@ var express = require('express'),
 
 var app = express();
 
+var server = require('http').Server(app);
+
+require('./config/socket')(server, config);
+
 require('./config/express')(app, config);
 
 //spawn job processes
@@ -12,7 +16,7 @@ jobs.forEach(function (job) {
   require(job);
 });
 
-app.listen(config.port, function () {
+server.listen(config.port, function () {
   console.log('Express server listening on port ' + config.port);
 });
 

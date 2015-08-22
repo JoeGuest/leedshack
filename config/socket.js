@@ -1,0 +1,23 @@
+var glob = require('glob');
+var session = require('express-session');
+var cookieParser = require('cookie-parser');
+var RedisStore = require('connect-redis')(session);
+var passportSocketIo = require("passport.socketio");
+
+module.exports = function (server, config) {
+  var io = require('socket.io')(server);
+  
+  io.use(passportSocketIo.authorize({
+    cookieParser: cookieParser,
+    key: 'pewpepwewpewpew',
+    secret: config.sessionSecret,
+    store: new RedisStore(config.redis)
+  }));
+  
+  io.on('connection', function (socket) {
+    var listeners = glob.sync(config.root + '/app/listeners/*.js');
+    listeners.forEach(function (controller) {
+      require(controller)(socket);
+    });
+  });
+};
