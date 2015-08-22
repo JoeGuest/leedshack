@@ -6,12 +6,17 @@ var User = thinky.createModel('User', {
   id: String,
   steam_id: String,
   username: String,
-  coins: Number
+  coins: Number,
+  profileurl: String,
+  avatar: String,
+  avatarmedium: String,
+  avatarfull: String,
+  realname: String,
+  loccountrycode: String
 });
 
 module.exports = User;
 
 // example on how to add relations
-// var Comment = require('./comment');
-// Article.hasMany(Comment, 'comments', 'id', 'article_id');
-
+var Bet = require('./bet');
+User.hasMany(Bet, 'bets', 'id', 'user_id');
