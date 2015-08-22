@@ -32,7 +32,7 @@ module.exports = function(app, config) {
   app.use(express.static(config.root + '/public'));
   app.use(methodOverride());
   app.use(session({
-    name: 'pewpepwewpewpew',
+    name: 'steambet',
     store: new RedisStore(config.redis),
     secret: config.sessionSecret,
     resave: true,

@@ -9,5 +9,5 @@ module.exports = function (app) {
 };
 
 router.get('/stats', function (req, res, next) {
-  res.json('hello');
+  res.json(req.user);
 });
