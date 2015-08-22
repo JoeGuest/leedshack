@@ -6298,6 +6298,16 @@ th.hide-for-touch {
   text-align: left; }
 
 .home-sign-in {
+  margin-top: 200px;
+  text-align: center; }
+
+.splash-table {
+  border: 0;
+  background: 0; }
+  .splash-table td {
+    color: #dddddd; }
+
+td {
   text-align: center; }
 
 .place-bid {
@@ -6305,4 +6315,5 @@ th.hide-for-touch {
 
 body {
   color: #dddddd;
+  background-color: #06152A;
   background-image: url(http://cdn.akamai.steamstatic.com/store/promo/livingroom/U3NjAxNTgzNw/bg.jpg?v=3); }

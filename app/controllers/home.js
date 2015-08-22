@@ -8,6 +8,7 @@ module.exports = function (app) {
 
 router.get('/', function (req, res, next) {
   res.render('index', {
-    title: 'SteamBet'
+    title: 'SteamBet',
+    user: req.user
   });
 });
