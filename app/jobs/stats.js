@@ -35,8 +35,9 @@ function getStats () {
           })
           .then(function (game) {
             // create Stat
+            if(game[0]) game = game[0];
             var s = new Stat({
-              game_id: game[0].id,
+              game_id: game.id,
               num_players: parseInt(num_players.replace(/,/g, ''))
             });
             return s.save();

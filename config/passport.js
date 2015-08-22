@@ -6,6 +6,8 @@ var SteamStrategy = require('passport-steam').Strategy,
 module.exports = function (passport){
 
   passport.serializeUser(function (user, done){
+    console.log('seralizing user');
+    console.log(user);
     done(null, user.id);
   });
 
