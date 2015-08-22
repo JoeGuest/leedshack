@@ -8,6 +8,7 @@
   ],
   "dependencies": {
     "angular": "~1.4.4",
-    "foundation": "~5.5.2"
+    "foundation": "~5.5.2",
+    "rome": "~2.1.22"
   }
 }
