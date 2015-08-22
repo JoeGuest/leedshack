@@ -9,4 +9,6 @@ var Stat = thinky.createModel('Stat', {
   created_at: type.date().default(r.now())
 });
 
+Stat.ensureIndex('created_at');
+
 module.exports = Stat;

@@ -25,6 +25,13 @@ router.get('/richest', function (req, res) {
   });
 });
 
+router.get('/statsforgame', function (req, res) {
+  var id = req.query.id;
+  Stat.filter({game_id: id}).orderBy(r.desc('created_at')).limit(1).run().then(function (stat) {
+    res.json(stat);
+  });
+});
+
 router.post('/getmultiplier', function (req, res) {
   var b = req.body;
   

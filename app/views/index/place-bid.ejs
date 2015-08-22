@@ -7,7 +7,7 @@
           <label for="right-label" class="right inline">Game:</label>
         </div>
         <div class="small-6 columns">
-          <select ng-model="bet.game" ng-options="game.name for game in games"></select>
+          <select ng-model="bet.game" ng-options="game.name for game in games" ng-change="changeGame()"></select>
         </div>
       </div>
       <div class="row">
@@ -54,7 +54,7 @@
   </div>
   <div class="small-4 columns">
     <a href="/auth/steam"><img ng-src="http://cdn.akamai.steamstatic.com/steam/apps/{{bet.game.app_id}}/header.jpg"></a>
-    <p>{{bet.game.name}}<br>Current users: {{bet.game.current_users}}</p>
+    <p>{{bet.game.name}}<br>Current users: {{num_players | number}}</p>
     <a href="#" class="button round" ng-click="submit()">Place bid</a>
   </div>
 </div>

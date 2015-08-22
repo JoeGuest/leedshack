@@ -6,6 +6,11 @@ module.exports = /*@ngInject*/ function ($http, SocketService) {
     },
     richest: function () {
       return $http.get('/richest');
+    },
+    getStats: function (id) {
+      return $http.get('/statsforgame', {
+        params: {id: id}
+      });
     }
   };
 

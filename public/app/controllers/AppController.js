@@ -41,4 +41,10 @@ module.exports = /*@ngInject*/ function ($scope, SocketService, BetService, Game
     }
   };
   
+  $scope.changeGame = function () {
+    GameService.getStats($scope.bet.game.id).success(function (stats) {
+      $scope.num_players = stats[0].num_players;
+    });
+  };
+  
 };
