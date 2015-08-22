@@ -1,4 +1,5 @@
 angular.module('steambet', [
   require('./controllers'),
-  require('./services')
+  require('./services'),
+  require('./directives')
 ]);
