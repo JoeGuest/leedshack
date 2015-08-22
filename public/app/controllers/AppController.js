@@ -10,7 +10,7 @@ module.exports = /*@ngInject*/ function ($scope, SocketService, BetService, Game
       coins: null,
       bet: null,
       range: null,
-      complet_time: null
+      complete_time: null
     };
   }
   
