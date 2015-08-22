@@ -3,6 +3,13 @@ $form-label-font-color: #dddddd;
 
 @import "../components/foundation/scss/foundation";
 
+.steambet-description {
+  margin-top: 100px;
+  p {
+    text-align: left;
+  }
+}
+
 .leaderboard {
   text-align: center;
 }
@@ -26,7 +33,7 @@ $form-label-font-color: #dddddd;
 }
 
 .home-sign-in {
-  margin-top: 200px;
+  margin-top: 100px;
   text-align: center;
 }
 

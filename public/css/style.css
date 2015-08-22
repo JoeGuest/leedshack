@@ -6282,6 +6282,11 @@ th.hide-for-touch {
   .show-for-print {
     display: none !important; } }
 
+.steambet-description {
+  margin-top: 100px; }
+  .steambet-description p {
+    text-align: left; }
+
 .leaderboard {
   text-align: center; }
 
@@ -6298,7 +6303,7 @@ th.hide-for-touch {
   text-align: left; }
 
 .home-sign-in {
-  margin-top: 200px;
+  margin-top: 100px;
   text-align: center; }
 
 .splash-table {
