@@ -35,7 +35,6 @@ function getStats () {
           })
           .then(function (game) {
             // create Stat
-            console.log(game[0].id);
             var s = new Stat({
               game_id: game[0].id,
               num_players: parseInt(num_players.replace(/,/g, ''))
