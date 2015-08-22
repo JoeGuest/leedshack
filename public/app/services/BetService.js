@@ -1,8 +1,17 @@
 module.exports = /*@ngInject*/ function ($http) {
 
   return {
-    create: function () {
-      
+    create: function (bet) {
+      return $http.post('/bet', bet);
+    },
+    current: function () {
+      return $http.get('/bet/me');
+    },
+    friends: function () {
+      return $http.get('/bet/friends');
+    },
+    popular: function () {
+      return $http.get('/bet/popular');
     }
   };
 
