@@ -1,17 +1,13 @@
 var express = require('express'),
   router = express.Router(),
-  models = require('../models'),
-  Article = models.Article;
+  models = require('../models')
 
 module.exports = function (app) {
   app.use('/', router);
 };
 
 router.get('/', function (req, res, next) {
-  Article.run().then(function (articles) {
-    res.render('index', {
-      title: 'Generator-Express MVC',
-      articles: articles
-    });
+  res.render('index', {
+    title: 'SteamBet'
   });
 });
