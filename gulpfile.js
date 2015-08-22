@@ -2,7 +2,11 @@ var gulp = require('gulp'),
   nodemon = require('gulp-nodemon'),
   plumber = require('gulp-plumber'),
   livereload = require('gulp-livereload'),
-  sass = require('gulp-sass');
+  sass = require('gulp-sass'),
+  browserify = require('browserify'),
+  source = require('vinyl-source-stream'),
+  ngAnnotate = require('browserify-ngannotate'),
+  uglifyify = require('uglifyify');
 
 gulp.task('sass', function () {
   gulp.src('./public/css/*.scss')
@@ -12,8 +16,19 @@ gulp.task('sass', function () {
     .pipe(livereload());
 });
 
+gulp.task('angular', function () {
+  return browserify('./public/app/app.js')
+    .transform(ngAnnotate)
+    .transform(uglifyify, {global: true})
+    .bundle()
+    .pipe(source('steambet.js'))
+    .pipe(gulp.dest('./public/js'))
+    .pipe(livereload(__dirname));
+});
+
 gulp.task('watch', function() {
   gulp.watch('./public/css/*.scss', ['sass']);
+  gulp.watch('./public/app/**/*.js', ['angular']);
 });
 
 gulp.task('develop', function () {
@@ -35,6 +50,7 @@ gulp.task('develop', function () {
 
 gulp.task('default', [
   'sass',
+  'angular',
   'develop',
   'watch'
 ]);
