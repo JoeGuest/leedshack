@@ -1,3 +1,31 @@
+@import "../components/foundation/scss/foundation";
+
+.leaderboard {
+  text-align: center;
+}
+
+.navigation-bar {
+  .center {
+    text-align: center;
+  }
+}
+
+.bid-info {
+  text-align: center;
+}
+
+.bids {
+  text-align: center;
+}
+
+.single-bid-details {
+  text-align: left;
+}
+
+.home-sign-in {
+  text-align: center;
+}
+
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;

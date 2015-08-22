@@ -1,6 +1,17 @@
 <% include header %>
 
-  <h1><%-title %></h1>
-  <p>Welcome to <%-title %></p>
+<% include index/sign-in %>
+
+<div class="row">
+  <div class="small-8 columns">
+    <% include index/place-bid %>
+    <% include index/current-bids %>
+    <% include index/friends-bids %>
+    <% include index/popular-bids %>
+  </div>
+  <div class="small-4 columns leaderboard">
+    <% include index/leaderboard %>
+  </div>
+</div>
 
 <% include footer %>
