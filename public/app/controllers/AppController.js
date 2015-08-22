@@ -4,22 +4,26 @@ module.exports = /*@ngInject*/ function ($scope, SocketService, BetService, Game
     console.log(msg);
   });
   
+  function bet() {
+    return {
+      game: null,
+      coins: null,
+      bet: null,
+      range: null,
+      complet_time: null
+    };
+  }
+  
+  $scope.bet = bet();
+  
   GameService.list().success(function (games) {
     $scope.games = games;
   });
   
   $scope.submit = function () {
-    BetService.create({
-      game_id: '',
-      coins: 0,
-      bet: '',
-      range: {
-        min: 0,
-        max: 0
-      },
-      complete_time: 0
-    }).success(function () {
+    BetService.create($scope.bet).success(function () {
       $scope.message = 'BET SUBMITTED THANKS';
+      $scope.bet = bet();
     });
   };
   
