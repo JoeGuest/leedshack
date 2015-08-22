@@ -3,14 +3,26 @@ var express = require('express'),
   models = require('../models'),
   Game = models.Game,
   Stat = models.Stat,
-  Bet = models.Bet;
+  Bet = models.Bet,
+  User = models.User,
+  r = models.r;
 
 module.exports = function (app) {
   app.use('/', router);
 };
 
+router.get('/coins', function (req, res) {
+  res.json(req.user.coins);
+});
+
 router.get('/stats', function (req, res, next) {
   res.json(req.user);
+});
+
+router.get('/richest', function (req, res) {
+  User.pluck('username', 'coins', 'avatar').orderBy(r.desc('coins')).run().then(function (users) {
+    res.json(users);
+  });
 });
 
 router.post('/getmultiplier', function (req, res) {
@@ -83,7 +95,7 @@ router.get('/bet/popular', function (req, res) {
 
 
 router.get('/games', function (req, res) {
-  Game.run().then(function (games) {
+  Game.orderBy('name').run().then(function (games) {
     res.json(games);
   });
 });

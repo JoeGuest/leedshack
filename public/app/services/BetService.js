@@ -12,6 +12,9 @@ module.exports = /*@ngInject*/ function ($http) {
     },
     popular: function () {
       return $http.get('/bet/popular');
+    },
+    coins: function () {
+      return $http.get('/coins');
     }
   };
 

@@ -20,11 +20,25 @@ module.exports = /*@ngInject*/ function ($scope, SocketService, BetService, Game
     $scope.games = games;
   });
   
+  GameService.richest().success(function (users) {
+    $scope.richest = users;
+  });
+  
+  BetService.coins().success(function (coins) {
+    $scope.coins = coins;
+  });
+  
   $scope.submit = function () {
     BetService.create($scope.bet).success(function () {
       $scope.message = 'BET SUBMITTED THANKS';
       $scope.bet = bet();
     });
+  };
+  
+  $scope.coinChange = function () {
+    if($scope.coins - $scope.bet.coins  < 0) {
+      $scope.bet.coins = $scope.coins;
+    }
   };
   
 };

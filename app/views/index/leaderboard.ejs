@@ -1,8 +1,14 @@
 <h4 class="small-12 column">Richest Users</h4>
 <div class="small-12 column top-users">
-  <% for(var i = 0; i < 10;  i++) { %>
-    <% include ../components/leaderboard-details %>
-  <% } %>
+  <div ng-repeat="user in richest">
+    <div class="small-6 columns">
+      <img src="{{user.avatar}}" alt="">
+      {{user.username}}
+    </div>
+    <div class="small-6 columns">
+      {{user.coins}}
+    </div>
+  </div>
 </div>
 <h4 class="small-12 column">Biggest Wins</h4>
 <div class="small-12 column richest-users">

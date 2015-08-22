@@ -15,7 +15,8 @@
           <label for="right-label" class="right inline">Coins:</label>
         </div>
         <div class="small-6 columns">
-          <input ng-model="bet.coins" type="text" id="right-label" placeholder="Coins to bid">
+          <input ng-model="bet.coins" type="text" id="right-label" placeholder="Coins to bid" ng-change="coinChange()">
+          <span>{{(coins - bet.coins) | number}} remaining to bet</span>
         </div>
       </div>
       <div class="row">
@@ -39,7 +40,6 @@
           <label for="right-label" class="right inline">Within:</label>
         </div>
         <div class="small-6 columns">
-          <input bet.range type="text" id="right-label" placeholder="Choose bid range">
           <select ng-model="bet.range">
             <option value="">Choose bid range</option>
             <option value="0">Exact</option>
@@ -54,7 +54,7 @@
   </div>
   <div class="small-4 columns">
     <a href="/auth/steam"><img ng-src="http://cdn.akamai.steamstatic.com/steam/apps/{{bet.game.app_id}}/header.jpg"></a>
-    <p>{{bet.game.name}}</p>
+    <p>{{bet.game.name}}<br>Current users: {{bet.game.current_users}}</p>
     <a href="#" class="button round" ng-click="submit()">Place bid</a>
   </div>
 </div>
