@@ -1,3 +1,6 @@
+$header-font-color: #08a9ee;
+$form-label-font-color: #dddddd;
+
 @import "../components/foundation/scss/foundation";
 
 .leaderboard {
@@ -26,11 +29,11 @@
   text-align: center;
 }
 
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+.place-bid {
+  text-align: center;
 }
 
-a {
-  color: #00B7FF;
+body {
+  color: #dddddd;
+  background-image: url(http://cdn.akamai.steamstatic.com/store/promo/livingroom/U3NjAxNTgzNw/bg.jpg?v=3);
 }
