@@ -23,24 +23,21 @@
 
     <section class="top-bar-section">
       <ul class="right">
-        <li class="active"><a href="#"><img src="<%- user.avatar %>"></a></li>
+        <li class="active"><a href="#">
+          <% if (user) { %>
+            <img src="<%- user.avatar %>">
+          <% } %>
+        </a></li>
         <li class="has-dropdown">
-          <a href="#"><%- user.username %></a>
-          <ul class="dropdown">
-            <li><a href="#">Place Bid</a></li>
-            <li class="active"><a href="#">Current Bids</a></li>
-          </ul>
-        </li>
-      </ul>
-      <ul class="right">
-        <li class="has-dropdown">
-          <% if(user) { %>
+          <% if (user) { %>
+            <a href="#"><%- user.username %></a>
             <ul class="dropdown">
-              <li><a href="#">First link in dropdown</a></li>
-              <li class="active"><a href="#"><%- user.username %></a></li>
+              <li><a href="#">Place Bid</a></li>
+              <li><a href="#">Current Bids</a></li>
+              <li><a href="/logout">Log Out</a></li>
             </ul>
           <% } else { %>
-            <a href="/auth/steam"><img src="http://steamcommunity-a.akamaihd.net/public/images/signinthroughsteam/sits_small.png" width="154" height="23" border="0"></a>
+            <a href="/auth/steam"><img src="http://steamcommunity-a.akamaihd.net/public/images/signinthroughsteam/sits_small.png"></a>
           <% } %>
         </li>
       </ul>
