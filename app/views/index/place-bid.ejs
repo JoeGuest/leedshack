@@ -53,7 +53,10 @@
     </form>
   </div>
   <div class="small-4 columns">
-    <a href="/auth/steam"><img ng-src="http://cdn.akamai.steamstatic.com/steam/apps/{{bet.game.app_id}}/header.jpg"></a>
+    <a href="#">
+      <img ng-show="bet.game.app_id" ng-src="http://cdn.akamai.steamstatic.com/steam/apps/{{bet.game.app_id}}/header.jpg">
+      <img ng-hide="bet.game.app_id" ng-src="http://hydra-media.cursecdn.com/dota2.gamepedia.com/6/68/Cosmetic_icon_The_International_2015_-_25_Coins.png">
+    </a>
     <p>{{bet.game.name}}<br>Current users: {{bet.game.current_users}}</p>
     <a href="#" class="button round" ng-click="submit()">Place bid</a>
   </div>
