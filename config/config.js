@@ -12,10 +12,9 @@ var config = {
     redis: {
       host: 'localhost',
       port: 6379,
-      prefix: 'dev:',
-      ttl: 60 * 60 * 24 * 30
+      prefix: 'dev:'
     },
-    sessionSecret: 'asdadasgawae13doahdoiasd14',
+    sessionSecret: 'asdadasgawae1314',
     db: {db: 'leedshack_development'}
   },
 
