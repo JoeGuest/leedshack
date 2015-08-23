@@ -62,7 +62,7 @@ router.get('/yourprebets', function (req, res) {
     user_id: req.user.id,
     is_complete: true
   }).orderBy(r.desc('created_at'))
-  .limit(4)
+  .limit(3)
   .getJoin({
     game: true,
     stat: true
@@ -77,7 +77,7 @@ router.get('/yourprebets', function (req, res) {
 router.get('/allbets', function (req, res) {
   
   Bet.orderBy(r.desc('created_at'))
-  .limit(4)
+  .limit(3)
   .getJoin({
     game: true,
     user: true,
