@@ -24,6 +24,9 @@ module.exports = /*@ngInject*/ function ($http) {
     },
     allbets: function () {
       return $http.get('/allbets');
+    },
+    wins: function () {
+      return $http.get('/wins');
     }
   };
 

@@ -6,6 +6,7 @@ var express = require('express'),
   Bet = models.Bet,
   User = models.User,
   r = models.r,
+  Promise = require('bluebird'),
   moment = require('moment');
 
 module.exports = function (app) {
@@ -167,3 +168,44 @@ router.get('/games', function (req, res) {
     res.json(games);
   });
 });
+
+router.get('/wins', function (req, res) {
+  
+  Promise.props({
+    alltime: getalltime(),
+    today: gettoday()
+  }).then(function (data) {
+    res.json(data);
+  });
+  
+});
+
+function getalltime(){
+  return Bet.orderBy(r.desc('payout'))
+    .limit(1)
+    .getJoin({
+      user: true
+    })
+    .run().then(function (bets) {
+      return bets[0];
+    });
+}
+
+function gettoday(){
+  
+  var d = new Date();
+  d.setHours(0);
+  d.setMinutes(0);
+  d.setSeconds(0);
+  d.setMilliseconds(0);
+  
+  return Bet.filter(r.row('complete_time').gt(d))
+    .orderBy(r.desc('payout'))
+    .limit(1)
+    .getJoin({
+      user: true
+    })
+    .run().then(function (bets) {
+      return bets[0];
+    });
+}
