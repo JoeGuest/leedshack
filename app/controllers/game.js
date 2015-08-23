@@ -21,7 +21,7 @@ router.get('/stats', function (req, res, next) {
 });
 
 router.get('/richest', function (req, res) {
-  User.pluck('username', 'coins', 'avatar').orderBy(r.desc('coins')).run().then(function (users) {
+  User.pluck('username', 'coins', 'avatar').orderBy(r.desc('coins')).limit(10).run().then(function (users) {
     res.json(users);
   });
 });
@@ -47,8 +47,7 @@ router.get('/yourbets', function (req, res) {
   }).orderBy(r.desc('created_at'))
   // .limit(4)
   .getJoin({
-    game: true,
-    stat: true
+    game: true
   })
   .run()
   .then(function (bets) {
@@ -79,7 +78,11 @@ router.get('/allbets', function (req, res) {
   
   Bet.orderBy(r.desc('created_at'))
   .limit(4)
-  .getJoin({game: true})
+  .getJoin({
+    game: true,
+    user: true,
+    stat: true
+  })
   .run()
   .then(function (bets) {
     res.json(bets);

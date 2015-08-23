@@ -2,12 +2,27 @@
   <a href="#"><img src="http://cdn.akamai.steamstatic.com/steam/apps/{{bet.game.app_id}}/capsule_sm_120.jpg"></a>
 </div>
 <div class="small-12 column single-bid-details">
-  <div>Coins bid: {{bet.coins | number}}</div>
-  <div ng-hide="bet.is_complete">Payout: {{bet.coins * bet.multiplier | number}}</div>
-  <div ng-show="bet.is_complete">Payout: {{bet.payout | number}}</div>
-  <div>Bet finish: {{bet.complete_time | date}}</div>
+  <table class="splash-table">
+    <tr>
+      <td>Coins bid:</td>
+      <td>{{bet.coins | number}}</td>
+    </tr>
+    <tr ng-hide="bet.is_complete">
+      <td>Payout:</td>
+      <td>{{bet.coins * bet.multiplier | number}}</td>
+    </tr>
+    <tr ng-show="bet.is_complete">
+      <td>Payout:</td>
+      <td>{{bet.payout | number}}</td>
+    </tr>
+    <tr>
+      <td>Ends:</td>
+      <td>{{bet.complete_time | date:'dd/MM/yy HH:mm'}}</td>
+    </tr>
+  </table>
 </div>
 <div class="small-12 column" ng-show="bet.is_complete">
   <div ng-show="bet.success">Bid won! :)</div>
   <div ng-hide="bet.success">Bid lost! :(</div>
+  <div ng-show="bet.stat">{{bet.stat.num_players | number}} players</div>
 </div>
