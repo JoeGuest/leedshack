@@ -1,6 +1,9 @@
 var models = require('../models'),
   Game = models.Game,
   Stat = models.Stat,
+  Bet = models.Bet,
+  User = models.User,
+  r = models.r,
   axios = require('axios'),
   cheerio = require('cheerio'),
   Promise = require('bluebird');
@@ -41,6 +44,44 @@ function getStats () {
               num_players: parseInt(num_players.replace(/,/g, ''))
             });
             return s.save();
+          })
+          .then(function (stat) {
+            // work out wins etc
+            Bet.filter(r.row('complete_time').lt(r.now()))
+              .filter({
+                is_complete: false,
+                game_id: stat.game_id
+              })
+              .run()
+              .then(function (bets) {
+                if(!bets) return;
+                bets.forEach(function (bet) {
+                  
+                  if(stat.num_players >= bet.range.min ||
+                    stat.num_players <= bet.range.max) {
+                    // success
+                    bet.success = true;
+                    bet.is_complete = true;
+                    bet.payout = bet.coins * bet.multiplier;
+                    bet.stat_id = stat.id;
+                    bet.save()
+                      .then(function () {
+                        User.get(bet.user_id).run().then(function (user) {
+                          user.coins += bet.payout;
+                          user.save();
+                        });
+                      });
+                  }else{
+                    // fail
+                    bet.success = false;
+                    bet.is_complete = true;
+                    bet.payout = 0;
+                    bet.stat_id = stat.id;
+                    bet.save();
+                  }
+                  
+                });
+              });
           });
         
       });

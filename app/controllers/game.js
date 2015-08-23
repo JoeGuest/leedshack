@@ -76,6 +76,7 @@ router.post('/bet', function (req, res) {
       
       User.get(req.user.id).run().then(function (user) {
         req.user.coins -= coins;
+        if(req.user.coins < 1) req.user.coins = 1;
         req.user.save()
           .then(function (user) {
             res.json(user.coins);
