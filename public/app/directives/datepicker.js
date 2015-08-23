@@ -3,26 +3,19 @@ module.exports = function () {
 		restrict: 'C',
     require: '?ngModel',
 		link: function (scope, element, attr, ngModel) {
-			element.fdatepicker({
-				format: 'dd/mm/yyyy',
-        weekStart: 1
+			console.log(element[0]);
+			var cal = rome(element[0], {
+				inputFormat: 'DD/MM/YY HH:mm',
+				initialValue: moment().format('DD/MM/YY HH:mm'),
+				min: moment().format('DD/MM/YY HH:mm')
 			});
 
-      element.change(function () {
-        var value = element.val();
-        if(!value) return;
-        var values = value.split('/');
-        if(values.length !== 3) return;
-        // if year is 2 characters - prepend 20
-        if(values[2].length !== 2) return;
-        values[2] = '20' + values[2];
-        if(ngModel){
-          ngModel.$setViewValue(values.join('/'));
-          ngModel.$render();
-        }else{
-          element.val(values.join('/'));
-        }
-      });
+	    cal.on('data', function(value) {
+      	scope.ngModel = moment(value, 'DD/MM/YY HH:mm').format();
+      	scope.$apply();
+	    });
+      
+      
 		}
 	};
 };
