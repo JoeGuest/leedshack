@@ -29,8 +29,9 @@ module.exports = /*@ngInject*/ function ($scope, SocketService, BetService, Game
   });
   
   $scope.submit = function () {
-    BetService.create($scope.bet).success(function () {
-      $scope.message = 'BET SUBMITTED THANKS';
+    BetService.create($scope.bet).success(function (data) {
+      $scope.coins = data;
+      $scope.message = 'bet placed!';
       $scope.bet = bet();
     });
   };
