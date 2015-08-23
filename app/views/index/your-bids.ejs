@@ -1,6 +1,6 @@
 <div class="row bids">
   <h3>Your Bets</h3>
-
+  <div ng-hide="yourbets.length">You haven't got any live bids</div>
   <div ng-repeat="bet in yourbets">
     <div class="small-4 columns end">
       <% include ../components/placed-bid %>
