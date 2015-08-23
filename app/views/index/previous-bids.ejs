@@ -1,8 +1,9 @@
 <div class="small-12 column">
   <h3>Previous Bids</h3>
-  <% for(var i = 0; i < 2;  i++) { %>
+
+  <div ng-repeat="bet in yourbets">
     <div class="small-12 column">
       <% include ../components/placed-bid %>
     </div>
-  <% } %>
+  </div>
 </div>

@@ -1,7 +1,9 @@
 <div class="row bids">
   <h3>Your Bets</h3>
-  
+
   <div ng-repeat="bet in yourbets">
-    <% include ../components/placed-bid %>
+    <div class="small-4 columns end">
+      <% include ../components/placed-bid %>
+    </div>
   </div>
 </div>
