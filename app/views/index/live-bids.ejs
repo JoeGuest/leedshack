@@ -1,9 +1,12 @@
 <div class="row bids">
-  <h3>Live Bets</h3>
+  <h3>Recent Bets</h3>
 
   <div ng-repeat="bet in allbets">
     <div class="small-4 columns end">
-      <div>User: {{bet.user.username}}</div>
+      <div>
+        <img src="{{bet.user.avatar}}" alt="">
+        {{bet.user.username}}
+      </div>
       <% include ../components/placed-bid %>
     </div>
   </div>

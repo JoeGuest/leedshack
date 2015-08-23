@@ -81,4 +81,12 @@ module.exports = /*@ngInject*/ function ($scope, SocketService, BetService, Game
     });
   };
   
+  function wins() {
+    BetService.wins().success(function (data) {
+      $scope.wins = data;
+    });
+  }
+  wins();
+  $interval(wins, 5000);
+  
 };
