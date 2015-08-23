@@ -15,9 +15,11 @@
         <div class="small-6 columns">
           <label for="right-label" class="right inline">Coins:</label>
         </div>
-        <div class="small-6 columns">
+        <div class="small-3 columns">
           <input ng-model="bet.coins" type="text" id="right-label" placeholder="Coins to bid" ng-change="coinChange()">
-          <span>{{(coins - bet.coins) | number}} remaining to bet</span>
+        </div>
+        <div class="small-3 columns">
+          <label for="right-label" class="left inline">{{(coins - bet.coins) | number}} left</label>
         </div>
       </div>
       <div class="row">
@@ -25,7 +27,7 @@
           <label for="right-label" class="right inline">Number of users:</label>
         </div>
         <div class="small-6 columns">
-          <input ng-model="bet.bet" type="text" id="right-label" placeholder="Users online">
+          <input ng-model="bet.bet" type="number" min="0" id="right-label" placeholder="Users online">
         </div>
       </div>
       <div class="row">
