@@ -19,6 +19,9 @@ module.exports = /*@ngInject*/ function ($http) {
     yourbets: function () {
       return $http.get('/yourbets');
     },
+    yourprebets: function () {
+      return $http.get('/yourprebets');
+    },
     allbets: function () {
       return $http.get('/allbets');
     }

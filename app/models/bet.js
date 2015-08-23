@@ -30,4 +30,4 @@ var User = require('./user');
 Bet.belongsTo(User, 'user', 'user_id', 'id');
 
 var Stat = require('./stat');
-Bet.belongsTo(Game, 'stat', 'stat_id', 'id');
+Bet.belongsTo(Stat, 'stat', 'stat_id', 'id');

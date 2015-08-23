@@ -44,6 +44,14 @@ module.exports = /*@ngInject*/ function ($scope, SocketService, BetService, Game
   yourbets();
   $interval(yourbets, 5000);
   
+  function yourprebets() {
+    BetService.yourprebets().success(function (bets) {
+      $scope.yourprebets = bets;
+    });
+  }
+  yourprebets();
+  $interval(yourprebets, 5000);
+  
   function allbets() {
     BetService.allbets().success(function (bets) {
       $scope.allbets = bets;
