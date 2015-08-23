@@ -6310,6 +6310,7 @@ th.hide-for-touch {
   border: 0;
   background: 0; }
   .splash-table td {
+    padding: 0;
     color: #dddddd; }
   .splash-table tr:nth-of-type(even) {
     background: transparent !important; }

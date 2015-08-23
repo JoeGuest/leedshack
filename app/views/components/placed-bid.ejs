@@ -4,20 +4,20 @@
 <div class="small-12 column single-bid-details">
   <table class="splash-table">
     <tr>
-      <td>Coins bid:</td>
-      <td>{{bet.coins | number}}</td>
+      <td>Bid:</td>
+      <td class="result">{{bet.coins | number}}</td>
     </tr>
     <tr ng-hide="bet.is_complete">
       <td>Payout:</td>
-      <td>{{bet.coins * bet.multiplier | number}}</td>
+      <td class="result">{{bet.coins * bet.multiplier | number}}</td>
     </tr>
     <tr ng-show="bet.is_complete">
       <td>Payout:</td>
-      <td>{{bet.payout | number}}</td>
+      <td class="result">{{bet.payout | number}}</td>
     </tr>
     <tr>
       <td>Ends:</td>
-      <td>{{bet.complete_time | date:'dd/MM/yy HH:mm'}}</td>
+      <td class="result">{{bet.complete_time | date:'dd/MM/yy HH:mm'}}</td>
     </tr>
   </table>
 </div>
