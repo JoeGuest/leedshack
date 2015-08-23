@@ -1,15 +1,18 @@
-<div class="small-12 column">
-  <a href="#"><img src="http://cdn.akamai.steamstatic.com/steam/apps/252950/capsule_sm_120.jpg"></a>
-</div>
-<div class="small-6 columns single-bid-details">
-  <div>Coins bid</div>
-  <div>Payout</div>
-</div>
-<div class="small-6 columns single-bid-details">
-  <div>Bet finish</div>
-  <div>Multipler</div>
-</div>
-<div class="small-12 column">
-  <div>Bid won! :)</div>
-  <div>Bid lost! :(</div>
+<div class="small-4 columns end">
+  <div class="small-12 column">
+    <a href="#"><img src="http://cdn.akamai.steamstatic.com/steam/apps/{{bet.game.app_id}}/capsule_sm_120.jpg"></a>
+  </div>
+  <div class="small-6 columns single-bid-details">
+    <div>Coins bid: {{bet.coins | number}}</div>
+    <div ng-hide="bet.is_complete">Payout: {{bet.coins * bet.multiplier | number}}</div>
+    <div ng-show="bet.is_complete">Payout: {{bet.payout | number}}</div>
+  </div>
+  <div class="small-6 columns single-bid-details">
+    <div>Bet finish: {{bet.complete_time | date}}</div>
+    <div>Multipler: {{bet.multiplier}}</div>
+  </div>
+  <div class="small-12 column" ng-show="bet.is_complete">
+    <div ng-show="bet.success">Bid won! :)</div>
+    <div ng-hide="bet.success">Bid lost! :(</div>
+  </div>
 </div>

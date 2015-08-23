@@ -17,7 +17,8 @@ var Bet = thinky.createModel('Bet', {
   is_complete: type.boolean().default(false),
   success: Boolean,
   payout: Number,
-  multiplier: Number
+  multiplier: Number,
+  created_at: type.date().default(r.now())
 });
 
 module.exports = Bet;

@@ -18,8 +18,8 @@ module.exports = function (passport){
   });
   
   passport.use(new SteamStrategy({
-      returnURL: 'http://localhost:3000/auth/steam/return',
-      realm: 'http://localhost:3000/',
+      returnURL: 'http://172.18.1.251:3000/auth/steam/return',
+      realm: 'http://172.18.1.251:3000/',
       apiKey: apikeys.steam
     },
     function(identifier, profile, done) {

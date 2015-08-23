@@ -1,4 +1,4 @@
-module.exports = /*@ngInject*/ function ($scope, SocketService, BetService, GameService) {
+module.exports = /*@ngInject*/ function ($scope, SocketService, BetService, GameService, $interval) {
   
   SocketService.on('test', function (msg) {
     console.log(msg);
@@ -20,19 +20,44 @@ module.exports = /*@ngInject*/ function ($scope, SocketService, BetService, Game
     $scope.games = games;
   });
   
-  GameService.richest().success(function (users) {
-    $scope.richest = users;
-  });
+  function richest() {
+    GameService.richest().success(function (users) {
+      $scope.richest = users;
+    });
+  }
+  richest();
+  $interval(richest, 5000);
   
-  BetService.coins().success(function (coins) {
-    $scope.coins = coins;
-  });
+  function coins() {
+    BetService.coins().success(function (coins) {
+      $scope.coins = coins;
+    });
+  }
+  coins();
+  $interval(coins, 5000);
+  
+  function yourbets() {
+    BetService.yourbets().success(function (bets) {
+      $scope.yourbets = bets;
+    });
+  }
+  yourbets();
+  $interval(yourbets, 5000);
+  
+  function allbets() {
+    BetService.allbets().success(function (bets) {
+      $scope.allbets = bets;
+    });
+  }
+  allbets();
+  $interval(allbets, 5000);
   
   $scope.submit = function () {
     BetService.create($scope.bet).success(function (data) {
       $scope.coins = data;
       $scope.message = 'bet placed!';
       $scope.bet = bet();
+      yourbets();
     });
   };
   

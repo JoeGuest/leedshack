@@ -39,6 +39,32 @@ router.post('/getmultiplier', function (req, res) {
   
 });
 
+router.get('/yourbets', function (req, res) {
+  
+  Bet.filter({
+    user_id: req.user.id
+  }).orderBy(r.desc('created_at'))
+  .limit(4)
+  .getJoin({game: true})
+  .run()
+  .then(function (bets) {
+    res.json(bets);
+  });
+  
+});
+
+router.get('/allbets', function (req, res) {
+  
+  Bet.orderBy(r.desc('created_at'))
+  .limit(4)
+  .getJoin({game: true})
+  .run()
+  .then(function (bets) {
+    res.json(bets);
+  });
+  
+});
+
 function getMultiplier (bet) {
   
   return 2;
