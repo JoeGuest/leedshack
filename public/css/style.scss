@@ -43,6 +43,9 @@ $form-label-font-color: #dddddd;
   td {
     color: #dddddd;
   }
+  tr:nth-of-type(even){
+    background: transparent !important;
+  }
 }
 
 td {

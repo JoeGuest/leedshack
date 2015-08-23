@@ -6311,6 +6311,8 @@ th.hide-for-touch {
   background: 0; }
   .splash-table td {
     color: #dddddd; }
+  .splash-table tr:nth-of-type(even) {
+    background: transparent !important; }
 
 td {
   text-align: center; }

@@ -3,6 +3,7 @@
 
   <div ng-repeat="bet in allbets">
     <div class="small-4 columns end">
+      <div>User: {{bet.user.username}}</div>
       <% include ../components/placed-bid %>
     </div>
   </div>
