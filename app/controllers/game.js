@@ -42,10 +42,32 @@ router.post('/getmultiplier', function (req, res) {
 router.get('/yourbets', function (req, res) {
   
   Bet.filter({
-    user_id: req.user.id
+    user_id: req.user.id,
+    is_complete: false
+  }).orderBy(r.desc('created_at'))
+  // .limit(4)
+  .getJoin({
+    game: true,
+    stat: true
+  })
+  .run()
+  .then(function (bets) {
+    res.json(bets);
+  });
+  
+});
+
+router.get('/yourprebets', function (req, res) {
+  
+  Bet.filter({
+    user_id: req.user.id,
+    is_complete: true
   }).orderBy(r.desc('created_at'))
   .limit(4)
-  .getJoin({game: true})
+  .getJoin({
+    game: true,
+    stat: true
+  })
   .run()
   .then(function (bets) {
     res.json(bets);
