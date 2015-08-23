@@ -5,7 +5,8 @@ var express = require('express'),
   Stat = models.Stat,
   Bet = models.Bet,
   User = models.User,
-  r = models.r;
+  r = models.r,
+  moment = require('moment');
 
 module.exports = function (app) {
   app.use('/', router);
@@ -48,21 +49,22 @@ router.post('/bet', function (req, res) {
   
   var b = req.body;
   
-  var time = b.complete_time;
-  // convert time
-  
+  var time = moment(b.complete_time, 'DD/MM/YY HH:mm').format();
   
   // work out multiplier
   var multiplier = getMultiplier(b);
+  var coins = parseInt(b.coins);
+  var bet = parseInt(b.bet);
+  var range = parseInt(b.range);
   
   var bet = new Bet({
     user_id: req.user.id,
     game_id: b.game.id,
-    coins: b.coins,
-    bet: b.bet,
+    coins: coins,
+    bet: bet,
     range: {
-      min: 0,
-      max: 0
+      min: bet - (range / 2),
+      max: bet + (range / 2)
     },
     complete_time: time,
     is_complete: false,
@@ -71,7 +73,14 @@ router.post('/bet', function (req, res) {
   
   bet.save()
     .then(function () {
-      res.json();
+      
+      User.get(req.user.id).run().then(function (user) {
+        req.user.coins -= coins;
+        req.user.save()
+          .then(function (user) {
+            res.json(user.coins);
+          });
+      });
     });
   
   
